@@ -1,3 +1,5 @@
+require 'set'
+
 class GraphNode
     attr_reader :value
     attr_accessor :neighbors
@@ -10,9 +12,12 @@ class GraphNode
         return self if starting_node.value == target_value
         q = starting_node.neighbors.dup
         visited = Set.new()
-        q.each do |node|
-            return if visited.include?(node)
-            visited << node
+        until q.empty?
+            node = q.shift
+            next if visited.include?(node.value.to_sym)
+            visited << node.value.to_sym
+            return node if node.value == target_value
+            q += node.neighbors
         end
     end
 end
@@ -27,3 +32,6 @@ a.neighbors = [b, c, e]
 c.neighbors = [b, d]
 e.neighbors = [a]
 f.neighbors = [e]
+
+p bfs(a, "f") # => nil
+p a.bfs(a, 'b') # => #<GraphNode:0x00007fffd19d8e50 @neighbors=[], @value="b">
