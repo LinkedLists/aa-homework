@@ -6,12 +6,26 @@ end
   # PHASE 3
 FRUITS = ["apple", "banana", "orange"]
 
+class CoffeeError < StandardError
+    def message
+        "okay, maybe one more try"
+    end
+end
+
+class FruitError < StandardError
+    def message
+        "that's not a fruit -.-"
+    end
+end
+
 def reaction(maybe_fruit)
     if FRUITS.include? maybe_fruit
         puts "OMG, thanks so much for the #{maybe_fruit}!"
-    else 
-        raise StandardError.new "that's not a fruit -.-"
-    end 
+    elsif maybe_fruit == "coffee"
+        raise CoffeeError
+    else
+        raise FruitError
+    end
 end
 
 def feed_me_a_fruit
@@ -20,11 +34,14 @@ def feed_me_a_fruit
     maybe_fruit = gets.chomp
     begin 
         reaction(maybe_fruit)
-    rescue StandardError => e
-        puts "I want coffee now"
+    rescue CoffeeError => e
+        puts e.message
+        puts "Feed me a fruit! (Enter the name of a fruit:)"
         maybe_fruit = gets.chomp
         reaction(maybe_fruit)
         retry
+    rescue FruitError => e
+        puts e.message
     end
 end  
 
