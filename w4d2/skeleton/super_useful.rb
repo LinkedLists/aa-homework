@@ -10,7 +10,7 @@ def reaction(maybe_fruit)
     if FRUITS.include? maybe_fruit
         puts "OMG, thanks so much for the #{maybe_fruit}!"
     else 
-        raise StandardError.new "thats not a fruit -.-"
+        raise StandardError.new "that's not a fruit -.-"
     end 
 end
 
@@ -21,7 +21,7 @@ def feed_me_a_fruit
     begin 
         reaction(maybe_fruit)
     rescue StandardError => e
-        puts "i want coffee now"
+        puts "I want coffee now"
         maybe_fruit = gets.chomp
         reaction(maybe_fruit)
         retry
@@ -31,6 +31,13 @@ end
 # PHASE 4
 class BestFriend
     def initialize(name, yrs_known, fav_pastime)
+        if yrs_known < 5
+            raise ArgumentError.new "don't simp, needs 5 years"
+        elsif name.length <= 0
+            raise ArgumentError.new "you don't seem to have a name"
+        elsif fav_pastime.length <= 0
+            raise ArgumentError.new "everybody has a favorite pastime!!"
+        end
         @name = name
         @yrs_known = yrs_known
         @fav_pastime = fav_pastime
