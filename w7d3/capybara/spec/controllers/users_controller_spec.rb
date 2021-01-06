@@ -11,13 +11,23 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "POST #create" do
     context "with invalid params" do
-      it "validates the presence of the user's email and password"
+      it "validates the presence of the user's email and password" do
+        post :create, params: { user: { email: "fsfdfdddfd", password: "" } }
+        expect(response).to render_template("new")
+      end 
 
-      it "validates that the password is at least 6 characters long"
+      it "validates that the password is at least 6 characters long" do
+        post :create, params: { user: { email: "aasfffffff", password: "short" } }
+        expect(response).to render_template("new")
+      end
     end
 
     context "with valid params" do
-      it "redirects user to bands index on success"
+      it "redirects user to bands index on success" do
+        post :create, params: { user: { email: "yaya@email", password: "123456" } }
+        # post :index
+        expect(response).to redirect_to(bands_url)
+      end
     end
   end
 end
