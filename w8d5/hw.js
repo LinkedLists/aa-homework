@@ -26,17 +26,16 @@ function teaAndBiscuits () {
     reader.question('Would you like some biscuits?', (res) => {
       second = res;
       console.log(`You replied ${res}.`);
+      const firstRes = (first === 'yes') ? 'do' : 'don\'t';
+      const secondRes = (second === 'yes') ? 'do' : 'don\'t';
+      console.log(`So you ${firstRes} want tea and you ${secondRes} want biscuits.`);
+      reader.close();
     });
 
   });
 
-  const firstRes = (first === 'yes') ? 'do' : 'don\'t';
-  const secondRes = (second === 'yes') ? 'do' : 'don\'t';
 
-  console.log(`So you ${firstRes} want tea and you ${secondRes} want biscuits.`);
-
-  reader.close();
-}// this is not working?
+}//reader.close() needs to be closed inside the block to end the program
 
 // teaAndBiscuits()
 
@@ -59,8 +58,6 @@ const Markov = new Cat ();
 const Noodles = new Dog ();
 
 // Noodles.chase(Markov);
-Noodles.chase.call(Markov, Noodles);
-Dog.prototype.chase.call(Noodles, Markov);
-
-
+// Noodles.chase.call(Markov, Noodles);
+// Dog.prototype.chase.call(Noodles, Markov);
 
