@@ -255,8 +255,18 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this$state = this.state,
+          num1 = _this$state.num1,
+          num2 = _this$state.num2,
+          result = _this$state.result;
       return (// render to return 1 element
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello World"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.state.result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello World"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.state.result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.setNum1,
+          value: num1
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.setNum2,
+          value: num2
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.add
         }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.subtract
