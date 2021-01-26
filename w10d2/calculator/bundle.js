@@ -150,7 +150,8 @@ function (_React$Component) {
 
     _classCallCheck(this, Calculator);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Calculator).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Calculator).call(this, props)); //needed to use this.
+
     _this.state = {
       num1: '',
       num2: '',
@@ -160,7 +161,9 @@ function (_React$Component) {
     _this.subtract = _this.subtract.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.multiply = _this.multiply.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.divide = _this.divide.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.clear = _this.clear.bind(_assertThisInitialized(_assertThisInitialized(_this))); // this.result
+    _this.clear = _this.clear.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.setNum1 = _this.setNum1.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.setNum2 = _this.setNum2.bind(_assertThisInitialized(_assertThisInitialized(_this))); // this.result
     // this.input1;
     // this.input2;
     //your code here
@@ -214,20 +217,46 @@ function (_React$Component) {
         num2: "",
         result: 0
       });
-    }
+    } // setNum1(e) {
+    //   if (e) {
+    //     let num = parseInt(e);
+    //   } else {
+    //     let num = '';
+    //   }
+    //   this.setState({ num1 });
+    // }
+    // setNum2(e) {
+    //   if (e) {
+    //     let num = parseInt(e);
+    //   } else {
+    //     let num = '';
+    //   }
+    //   this.setState({ num2 });
+    // }
+
   }, {
     key: "setNum1",
     value: function setNum1(e) {
-      if (e) {}
+      e.preventDefault();
+      var num1 = e.target.value ? parseInt(e.target.value) : "";
+      this.setState({
+        num1: num1
+      });
+    }
+  }, {
+    key: "setNum2",
+    value: function setNum2(e) {
+      e.preventDefault();
+      var num2 = e.target.value ? parseInt(e.target.value) : "";
+      this.setState({
+        num2: num2
+      });
     }
   }, {
     key: "render",
     value: function render() {
       return (// render to return 1 element
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello World"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          onChange: this.setNum1,
-          value: num1
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.state.result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Hello World"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.state.result), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.add
         }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           onClick: this.subtract

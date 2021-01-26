@@ -2,7 +2,7 @@ import React from 'react';
 
 class Calculator extends React.Component{
   constructor(props){
-    super(props);
+    super(props); //needed to use this.
     this.state = { num1: '', num2: '', result: 0 };
 
     this.add = this.add.bind(this);
@@ -10,6 +10,9 @@ class Calculator extends React.Component{
     this.multiply = this.multiply.bind(this);
     this.divide = this.divide.bind(this);
     this.clear = this.clear.bind(this);
+
+    this.setNum1 = this.setNum1.bind(this);
+    this.setNum2 = this.setNum2.bind(this);
     // this.result
     // this.input1;
     // this.input2;
@@ -48,10 +51,36 @@ class Calculator extends React.Component{
     this.setState({ num1: "", num2: "", result: 0 });
   }
 
-  setNum1(e) {
-    if (e) {
-      
-    }
+  // setNum1(e) {
+  //   if (e) {
+  //     let num = parseInt(e);
+  //   } else {
+  //     let num = '';
+  //   }
+  //   this.setState({ num1 });
+  // }
+
+  // setNum2(e) {
+  //   if (e) {
+  //     let num = parseInt(e);
+  //   } else {
+  //     let num = '';
+  //   }
+  //   this.setState({ num2 });
+  // }
+
+  setNum1(e){
+    e.preventDefault();
+
+    const num1 = e.target.value ? parseInt(e.target.value) : "";
+    this.setState({ num1 });
+  }
+
+  setNum2(e){
+    e.preventDefault();
+
+    const num2 = e.target.value ? parseInt(e.target.value) : "";
+    this.setState({ num2 });
   }
 
 
@@ -60,7 +89,8 @@ class Calculator extends React.Component{
       // render to return 1 element
       <div>
         <h1>Hello World</h1>
-        <input onChange={this.setNum1} value={num1}></input>
+        {/* <input onChange={this.setNum1} value={num1}></input>
+        <input onChange={this.setNum2} value={num2}></input> */}
         <div>
           <h1>{this.state.result}</h1>
           <button onClick={this.add}>+</button>
