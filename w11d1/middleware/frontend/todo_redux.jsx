@@ -10,21 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     JSON.parse(localStorage.state) : {};
   const store = configureStore(preloadedState);
   store = applyMiddlewares(store, addLoggingToDispatch);
-  
+
   const root = document.getElementById('content');
   ReactDOM.render(<Root store={store} />, root);
 });
 
-// const addLoggingToDispatch = (store) => {
-//   let dispatchStore = store.dispatch;
-
-//   return (action) => {
-//     console.log(store.getState());
-//     console.log(store.action())
-//     dispatchStore(action)
-//     store.getState()
-//   }
-// }
 
 // const applyMiddlewares = (store) => { //use es6 arrows
 //   return (next) => (action) => {
