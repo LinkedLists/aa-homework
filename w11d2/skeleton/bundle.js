@@ -207,16 +207,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./components/root.jsx");
-/* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/api_util */ "./util/api_util.js");
 
 
 
+ // import { fetchSearchGiphys } from './util/api_util'
 
- // document.addEventListener('DOMContentLoaded', () => {
-// 	const store = configureStore();
-// 	const root = document.getElementById('root');
-// 	ReactDOM.render(<Root store={store} />, root);
-// });
+document.addEventListener('DOMContentLoaded', function () {
+  var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  window.store = store; // const root = document.getElementById('root');
+  // ReactDOM.render(<Root store={store} />, root);
+});
 
 /***/ }),
 
@@ -23909,7 +23909,7 @@ module.exports = function(originalModule) {
 /*!************************************!*\
   !*** ./reducers/giphys_reducer.js ***!
   \************************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23917,13 +23917,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/giphy_actions */ "./actions/giphy_actions.js");
 
 
+var giphysReducer = function giphysReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  //state is an array?
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH_GIPHYS"]:
+      return action.giphys;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (giphysReducer); //requires default according to root
+
 /***/ }),
 
 /***/ "./reducers/root_reducer.js":
 /*!**********************************!*\
   !*** ./reducers/root_reducer.js ***!
   \**********************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23932,6 +23949,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _giphys_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./giphys_reducer */ "./reducers/giphys_reducer.js");
 
 
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  giphys: _giphys_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+}));
 
 /***/ }),
 
@@ -23939,7 +23959,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************!*\
   !*** ./store/store.js ***!
   \************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23950,6 +23970,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var configureStore = function configureStore() {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(RootReducer);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (configureStore);
 
 /***/ }),
 
